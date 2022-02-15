@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Converse Demos</title>
+    <title>Converse - Anonymous login demo</title>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -20,6 +20,8 @@
     <link type="text/css" rel="stylesheet" media="screen" href="/dist/converse.min.css" />
     <script src="https://cdn.conversejs.org/3rdparty/libsignal-protocol.min.js"></script>
     <script src="/dist/converse.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdn.conversejs.org/9.0.0/dist/converse.min.css">
+    <script src="https://cdn.conversejs.org/9.0.0/dist/converse.min.js" charset="utf-8"></script>
 </head>
 
 <body id="page-top" data-spy="scroll" class="converse-website">
@@ -27,7 +29,6 @@
     <nav class="navbar sticky-top navbar-expand-lg" role="navigation">
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <span class="page-scroll">
-                <a class="navbar-brand" href="/"><span class="converse-brand-heading">Home</span></a>
             </span>
         </div>
     </nav>
@@ -36,12 +37,7 @@
         <div class="row">
             <div class="col-md-12 col-md-offset-2">
                 <h1 class="brand-heading fade-in">
-                    <svg class="converse-svg-logo"
-                        xmlns:svg="http://www.w3.org/2000/svg"
-                        xmlns="http://www.w3.org/2000/svg"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                        viewBox="0 0 364 364">
-                    <title>Home</title>
+                    <title>Converse</title>
                     <g class="cls-1" id="g904">
                         <g data-name="Layer 2">
                             <g data-name="Layer 7">
@@ -61,17 +57,9 @@
                 </span>
                 </h1>
 
-                <p class="intro-text">Demos:</p>
-                <p class="intro-text">
-                    <ul style="list-style: none; font-size: 22px;">
-                        <li><a href="/fullscreen.html">As a fullscreen application</a></li>
-                        <li><a href="/demo/anonymous.html">Anonymous login</a></li>
-                        <li><a href="/demo/embedded.html">Single MUC chatroom embedded into the page</a></li>
-                    </ul>
-                </p>
+                <p class="intro-text">Anonymous login demo</p>
             </div>
         </div>
-    </section>
     </section>
 </section>
 </body>
@@ -102,12 +90,33 @@
     ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
     OTHER DEALINGS IN THE SOFTWARE.
 
-    For more information, please refer to <https://unlicense.org/>
+    For more information, please refer to <http://unlicense.org/>
     @licend
-    */
-    converse.initialize({
-        // Please use this connection manager only for testing purposes
-        bosh_service_url: 'https://conversejs.org/http-bind/'
-    });
+	*/
+        converse.initialize({
+            allow_logout: false, // No point in logging out when we have auto_login as true.
+            allow_muc_invitations: false, // Doesn't make sense to allow because only
+                                          // roster contacts can be invited
+            allow_contact_requests: false, // Contacts from other servers cannot,
+                                           // be added and anonymous users don't
+                                           // know one another's JIDs, so disabling.
+            authentication: 'anonymous',
+            auto_login: true,
+            auto_join_rooms: [
+                'anonymous@conference.nomnom.im',
+            ],
+            notify_all_room_messages: [
+                'anonymous@conference.nomnom.im',
+            ],
+            bosh_service_url: 'https://conversejs.org/http-bind/', // Please use this connection manager only for testing purposes
+            jid: 'nomnom.im', // XMPP server which allows anonymous login (doesn't
+                              // allow chatting with other XMPP servers).
+            keepalive: true,
+            hide_muc_server: true, // Federation is disabled, so no use in
+                                   // showing the MUC server.
+            play_sounds: true,
+            show_controlbox_by_default: true,
+            strict_plugin_dependencies: false,
+        });
 </script>
 </html>
