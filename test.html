@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Talknow Converse</title>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Converse XMPP/Jabber Chat"/>
+    <meta name="author" content="JC Brand" />
+    <meta name="keywords" content="xmpp chat webchat converse.js Converse" />
+   
+    <link rel="manifest" href="./manifest.json">
+    <link type="text/css" rel="stylesheet" media="screen" href="/dist/converse.min.js" />
+    <script src="https://cdn.conversejs.org/3rdparty/libsignal-protocol.min.js"></script>
+    <script src="/dist/converse.min.js"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="/dist/converse.min.css">
+    <script src="/dist/converse.min.js" charset="utf-8"></script>
+
+    <style>
+        #conversejs .avatar,
+        #conversejs .chat-head .avatar,
+        #conversejs .chatbox .sendXMPPMessage .chat-toolbar,
+        #conversejs .message.chat-msg .chat-msg__avatar,
+        #conversejs .message.chat-msg .chat-msg__heading .chat-msg__time,
+        #toggle-minimized-chats,
+        .brand-heading-container,
+        .show-client-info,
+        .show-user-details-modal:before,
+        .switch-form {
+            display: none !important
+        }
+    </style>
+</head>
+
+<body id="page-top" data-spy="scroll" class="converse-website">
+<section class="section-wrapper">
+    <section id="intro" class="intro" class="container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-2">
+                <span class="brand-heading__text">
+                    <span>converse<span class="subdued">.js</span></span>
+                    <p class="byline">messaging freedom</p>
+                </span>
+                </h1>
+
+                <p class="intro-text">A free and open-source XMPP chat client in your browser</p>
+                <p class="intro-text"><a href="/fullscreen.html">Fullpage</a> versions</p>
+                <p class="intro-text"><a href="/demo/anonymous.html" target="_blank">Anonymous</a> versions</p>
+		<p class="intro-text"><a href="/demo/embedded.html" target="_blank">Single MUC chatroom embedded into the page</a></p>
+		<p style="padding-top: 1.5em">
+                <a href="https://inverse.chat/#converse/room?jid=discuss@conference.conversejs.org"
+                   target="_blank" rel="noopener"><img src="https://conference.conversejs.org/muc_badge/discuss@conference.conversejs.org"/></a>
+                </p>
+		
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+
+<script>
+    /*
+    @licstart
+    This is free and unencumbered software released into the public domain.
+
+    Anyone is free to copy, modify, publish, use, compile, sell, or
+    distribute this software, either in source code form or as a compiled
+    binary, for any purpose, commercial or non-commercial, and by any
+    means.
+
+    In jurisdictions that recognize copyright laws, the author or authors
+    of this software dedicate any and all copyright interest in the
+    software to the public domain. We make this dedication for the benefit
+    of the public at large and to the detriment of our heirs and
+    successors. We intend this dedication to be an overt act of
+    relinquishment in perpetuity of all present and future rights to this
+    software under copyright law.
+
+    THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+    EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+    MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
+    IN NO EVENT SHALL THE AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+    OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+    ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+    OTHER DEALINGS IN THE SOFTWARE.
+
+    For more information, please refer to <https://unlicense.org/>
+    @licend
+    */
+    converse.initialize({
+        // Please use this connection manager only for testing purposes
+        bosh_service_url: 'https://conversejs.org/http-bind' 
+    });
+</script>
+</html>
